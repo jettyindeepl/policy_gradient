@@ -9,7 +9,7 @@ def build_mlp(input_size, output_size, n_layers, size):
     Args:
         input_size (int): the dimension of inputs to be given to the network
         output_size (int): the dimension of the output
-        n_layers (int): the number of hidden layers of the network
+        n_layers (int): the number of layers of the network
         size (int): the size of each hidden layer
     Returns:
         An instance of (a subclass of) nn.Module representing the network.

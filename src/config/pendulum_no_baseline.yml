@@ -1,5 +1,5 @@
 env:
-    env_name: &env_name "InvertedPendulum-v4"
+    env_name: &env_name "InvertedPendulum-v5"
     record: False
     seed: &seed [1, 2, 3]
     min_expected_reward: 1000

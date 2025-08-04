@@ -4,8 +4,8 @@ In this question, you will train your policy gradient implementation on three di
 
 \begin{itemize}
 	\item \href{https://www.gymlibrary.dev/environments/classic_control/cart_pole/}{CartPole-v1}
-	\item \href{https://www.gymlibrary.dev/environments/mujoco/inverted_pendulum/}{InvertedPendulum-v4}
-	\item \href{https://www.gymlibrary.dev/environments/mujoco/half_cheetah/}{HalfCheetah-v4}
+	\item \href{https://www.gymlibrary.dev/environments/mujoco/inverted_pendulum/}{InvertedPendulum-v5}
+	\item \href{https://www.gymlibrary.dev/environments/mujoco/half_cheetah/}{HalfCheetah-v5}
 \end{itemize}
 
 For each of the 3 environments, choose 3 random seeds and run your policy gradient implementation both with and without a baseline.
@@ -19,7 +19,7 @@ The general form for running your policy gradient implementation is as follows (
 $ python run.py --config_filename config_filename
 \end{lstlisting}
 
-Depending on the configuration file details you provide this command may train models for more than one seed which can take a while (especially for \textit{HalfCheetah-v4}). As a result, you may wish to run these jobs as background processes in which case you may run the command as follows:
+Depending on the configuration file details you provide this command may train models for more than one seed which can take a while (especially for \textit{HalfCheetah-v5}). As a result, you may wish to run these jobs as background processes in which case you may run the command as follows:
 
 \begin{lstlisting}
 $ nohup python run.py --config_filename config_filename &
@@ -61,19 +61,19 @@ We expect your plots to look similar to the plots which we have included:
 \begin{figure}[H]
 \centering
   \includegraphics[width=.45\linewidth]{images/CartPole-v1.png}
-  \includegraphics[width=.45\linewidth]{images/InvertedPendulum-v4.png}
+  \includegraphics[width=.45\linewidth]{images/InvertedPendulum-v5.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=.45\linewidth]{images/HalfCheetah-v4.png}
+  \includegraphics[width=.45\linewidth]{images/HalfCheetah-v5.png}
 \end{figure}
 
 The following performance benchmarks need to be achieved by your implementation in order to receive full credit for this question:
 
 \begin{itemize}
 	\item CartPole-v1: agent should reach the maximum return of 200 with and without baseline (although it may not stay there)
-	\item InvertedPendulum-v4: agent should reach the maximum return of 1000 with and without baseline (although it may not stay there)
-	\item HalfCheetah-v4: agent should reach at least a score of 200 with and without baseline (in general it can achieve a much higher score e.g. 900)
+	\item InvertedPendulum-v5: agent should reach the maximum return of 1000 with and without baseline (although it may not stay there)
+	\item HalfCheetah-v5: agent should reach at least a score of 200 with and without baseline (in general it can achieve a much higher score e.g. 900)
 \end{itemize}
 \clearpage

@@ -434,6 +434,7 @@ class PolicyGradient(object):
             name_prefix=f"rl-video-{step}",
         )
         self.evaluate(env, 1)
+        env.close()
 
     def run(self):
         """

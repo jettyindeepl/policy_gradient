@@ -109,6 +109,7 @@ class Test_1d(GradedTestCase):
     def test_0(self):
         """1d-0-basic: test get_returns with basic trajectory"""
         config = cartpole_config
+        config["model_training"]["device"] = "cpu"
         env = gym.make(config["env"]["env_name"])
         pg = PolicyGradient(env, config, seed=1)
         paths = [{"reward": np.zeros(11)}]
@@ -122,6 +123,7 @@ class Test_1d(GradedTestCase):
     def test_1(self):
         """1d-1-basic: test get_returns for discounted trajectory"""
         config = cartpole_config
+        config["model_training"]["device"] = "cpu"
         env = gym.make(config["env"]["env_name"])
         pg = PolicyGradient(env, config, seed=1)
         paths = [{"reward": np.ones(5)}]

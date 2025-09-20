@@ -37,4 +37,13 @@ def build_mlp(input_size, output_size, n_layers, size):
             model = nn.Sequential(*modules)
     """
     ### START CODE HERE ###
+    #build the input layer
+    mlp = []
+    mlp.append(nn.Linear(input_size,size))
+    #now let us build the inter-mediate layers
+    for i in range(n_layers-2):
+        mlp.append(nn.Linear(size,size))
+    mlp.append(nn.Linear(size,output_size))
+    model = nn.Sequential(nn.Flatten(),*mlp)
+    return(model)
     ### END CODE HERE ###

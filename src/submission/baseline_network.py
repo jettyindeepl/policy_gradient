@@ -34,6 +34,12 @@ class BaselineNetwork(nn.Module):
                 self.device = torch.device("mps")
         print(f"Running Baseline model on device {self.device}")
         ### START CODE HERE ###
+        input_dim = int(torch.prod(torch.Tensor(self.env.observation_space.shape)).item())
+        output_dim = 1
+        layer_size = self.config["hyper_params"]["layer_size"]
+        n_layers = self.config["hyper_params"]["n_layers"]
+        self.network = build_mlp(input_dim,output_dim,n_layers,layer_size)
+        self.optimizer = torch.optim.Adam(self.network.parameters())
         ### END CODE HERE ###
 
     def forward(self, observations):
@@ -55,6 +61,7 @@ class BaselineNetwork(nn.Module):
             (which will be returned).
         """
         ### START CODE HERE ###
+        output = self.network(observations).squeeze(-1)
         ### END CODE HERE ###
         assert output.ndim == 1
         return output
@@ -87,6 +94,10 @@ class BaselineNetwork(nn.Module):
         """
         observations = np2torch(observations, device=self.device)
         ### START CODE HERE ###
+        baseline_values = self.forward(observations)
+        baseline_values = baseline_values.cpu()
+        baseline_values = baseline_values.detach().numpy()
+        advantages = returns - baseline_values
         ### END CODE HERE ###
         return advantages
 
@@ -106,4 +117,9 @@ class BaselineNetwork(nn.Module):
         returns = np2torch(returns, device=self.device)
         observations = np2torch(observations, device=self.device)
         ### START CODE HERE ###
+        loss_fn = nn.MSELoss()
+        target = self.forward(observations)
+        loss = loss_fn(returns,target)
+        loss.backward()
+        self.optimizer.step()
         ### END CODE HERE ###
